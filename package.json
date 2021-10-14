@@ -1,0 +1,11 @@
+{
+  "name": "babali-shop",
+  "version": "0.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
