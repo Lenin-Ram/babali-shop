@@ -11,11 +11,15 @@ const connectMongoDB = () => mongoose.connect('mongodb://localhost/babali', {
   useUnifiedTopology: true,
 });
 
+// Welcome route
 app.get('/', (req, res) => {
   return res.json({
     message: 'Welcome to Babali Shop',
   });
 });
+
+// API Routes
+app.use('/api', require('./handlers'));
 
 connectMongoDB().then(() => {
   app.listen(3000, () => {
