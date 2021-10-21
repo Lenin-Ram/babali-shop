@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { CategoryModel: Category } = require('../models/category');
+const permissions = require('../middlewares/permissions');
 
 // Find all categories
-router.get('/', async (req, res) => {
+router.get('/', permissions('admin', 'customer'), async (req, res) => {
   const categories = await Category.find().exec();
 
   return res.json({
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // Find category by id
-router.get('/:id', async (req,res) => {
+router.get('/:id', permissions('admin'), async (req,res) => {
   const { id } = req.params;
   const category = await Category.findById(id);
 
@@ -28,7 +29,7 @@ router.get('/:id', async (req,res) => {
 });
 
 // Create a new category
-router.post('/', async (req, res) => {
+router.post('/', permissions('admin'), async (req, res) => {
   const {
     name,
     description,
@@ -48,7 +49,7 @@ router.post('/', async (req, res) => {
 });
 
 // Delete category by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', permissions('admin'), async (req, res) => {
   const { id } = req.params;
   await Category.findByIdAndDelete(id);
 
@@ -58,7 +59,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Modify category by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', permissions('admin'), async (req, res) => {
   const { id } = req.params;
   const {
     name,

@@ -6,8 +6,11 @@
     "start": "node src/app"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-    "mongoose": "^6.0.10"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.10",
+    "validatorjs": "^3.22.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
