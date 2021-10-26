@@ -96,8 +96,8 @@ router.post('/login', async (req, res) => {
   const token = jwt.sign({
     iss: 'Babali Shop S.A de C.V',
     id: user._id,
-  }, 'secret-password', {
-    expiresIn: "1h",
+  }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
   // Refresh Tokens

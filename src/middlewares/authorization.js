@@ -12,7 +12,7 @@ const authorization = (req, res, next) => {
     });
   }
 
-  jwt.verify(token, 'secret-password', async (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
     if (err) return res.status(401).json({ message: 'Unauthorized' });
     const { id } = decoded;
 
